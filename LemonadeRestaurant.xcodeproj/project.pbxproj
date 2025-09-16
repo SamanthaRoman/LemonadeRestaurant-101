@@ -30,6 +30,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		4A097BF72E78C1D000375D80 /* Practice */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Practice;
+			sourceTree = "<group>";
+		};
 		4A4964392E78B0C600DBFA6B /* LemonadeRestaurant */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = LemonadeRestaurant;
@@ -75,6 +80,7 @@
 		4A49642E2E78B0C600DBFA6B = {
 			isa = PBXGroup;
 			children = (
+				4A097BF72E78C1D000375D80 /* Practice */,
 				4A4964392E78B0C600DBFA6B /* LemonadeRestaurant */,
 				4A4964472E78B0C700DBFA6B /* LemonadeRestaurantTests */,
 				4A4964512E78B0C700DBFA6B /* LemonadeRestaurantUITests */,
@@ -108,6 +114,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				4A097BF72E78C1D000375D80 /* Practice */,
 				4A4964392E78B0C600DBFA6B /* LemonadeRestaurant */,
 			);
 			name = LemonadeRestaurant;
