@@ -97,5 +97,5 @@ print(premium)
 // filter by a word
 
 let menu3 = ["Veggie Salad", "Steak", "Fruit Bowl", "Chicken"]
-
+f
 //let veggie = menu3.filter{ $0.contains("Veggie") || $0.contains

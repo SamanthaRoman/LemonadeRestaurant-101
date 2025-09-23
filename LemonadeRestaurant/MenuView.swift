@@ -30,10 +30,60 @@ struct MenuView: View {
         MenuItem(name: "Pasta", description: "Spagetti", price: 6.0),
         MenuItem(name: "Soup", description: "Broccoli Cheeder Soup", price: 9.0),
         MenuItem(name: "Salad", description: "Garden Salad", price: 8.0),
+        MenuItem(name: "Burger", description: "Beef patty", price: 10.0),
+        MenuItem(name: "Chicken", description: "Juicey and Grilled", price: 12.0),
+        MenuItem(name: "Fish", description: "Fresh from the sea", price: 12.0),
     ]
     
     
     // display text simple form
+    
+    @State private var showDesserts = false
+    @State private var showPremium = false
+    
+    // state means "swift ui please store and watch this value. if it changes, please rebuild the ui.
+    
+    
+    // COMPUTED PROPERTIES
+    // does not store a value.
+    // so what is it doing??
+    // each access recomputes the value
+    
+    
+    // SYNTAX for computed properties
+    // similar to arrow functions in react.
+    
+    /*
+     var propertyName: Type{
+     return a calculated value
+     }
+     */
+    // we are creating a new array using the data types... sorted alphabetically
+    
+    var sortedMenu: [MenuItem] {
+        // from the array.sort it {by $0 spot.name < $1.name}
+        menuItems.sorted {$0.name < $1.name}
+    }
+    
+    // filter menu
+    
+    var filteredMenu: [MenuItem] {
+        
+        // showPremium is our state variable that is automatically set to zero.
+        
+        showPremium ? menuItems.filter{$0.price > 10} : menuItems
+    }
+    
+    // display the prices. only one double not array
+    // displaying the average of all the menu
+    var averagePrice: Double {
+        let total = menuItems.map {$0.price}.reduce(0, +)
+        return total/Double(filteredMenu.count)
+    }
+    
+    // now only premium price.
+    
+    
     
     var body: some View {
         
@@ -47,12 +97,26 @@ struct MenuView: View {
                 Text("Today's menu")
                     .font(.title)
             }
+            
+            Text("Avearge price: $\(averagePrice, specifier: "%.2f") ").font(.footnote).foregroundColor(.secondary)
+            
+            VStack{
+                Toggle("Show an special text", isOn:$showPremium)
+                Button("View Dessert") {
+                    showDesserts.toggle()
+                }
+                .foregroundColor(.black)
+                .padding()
+                .background(Color.green.opacity(0.2))
+                .cornerRadius(10)
+            }
+            
             .padding()
             // new way of doing list from menu items list.
             // then access each one with key work "item" in (we call menue itemj view) "menuItemView.
             // JUST LIKE A FOR-LOOP
             
-            List(menuItems){ item in
+            List(filteredMenu){ item in
                 MenuItemView(itemFromP: item)
                 
             }
