@@ -11,7 +11,7 @@ print("Today is \(day)") // string interpolation
 
 let dailyTeperature = 75
 print("Today is \(day) and the temperature is \(dailyTeperature) degrees.")
-
+ 
 var temperature = 80
 print("The temperature in the morning is: \(temperature)")
 temperature = 85
