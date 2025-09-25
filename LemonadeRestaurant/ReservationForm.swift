@@ -7,7 +7,7 @@
 //
 import SwiftUI
 
-struct ReservationForm: View {
+struct ReservationForm: View{
     @State var userName=""
     @State var guestCount = 1
     @State var allergyNotes=""
