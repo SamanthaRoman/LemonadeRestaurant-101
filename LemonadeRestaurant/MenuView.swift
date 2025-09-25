@@ -83,7 +83,13 @@ struct MenuView: View {
     
     // now only premium price.
     
-    
+    func countItems(in items:[MenuItem])->(premium: Int, regular: Int){
+        
+        let premium = items.filter{$0.price > 10}.count
+        let regular = items.count - premium
+        
+        return (premium, regular)
+    }
     
     var body: some View {
         
@@ -120,6 +126,18 @@ struct MenuView: View {
                 MenuItemView(itemFromP: item)
                 
             }
+            
+            .sheet(isPresented: $showDesserts) {
+                DessertView()
+            }
+            
+            let summary = countItems(in: sortedMenu)
+            
+            Text("Premium: \(summary.premium) | Regular \(summary.regular) | Total $\(averagePrice,specifier: "%.2f")")
+                .font(.subheadline)
+                .padding()
+                .background(Color.yellow.opacity(0.1))
+                .cornerRadius(8)
             
             //List with dictionary is replaced by the above three lines of code.
 //            List{
